@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Neuron {
     private double weight;
+    private double DeltaWeight;
     public ArrayList<Synapse> rightSynapses;
     public ArrayList<Synapse> leftSynapses;
     private char position;
@@ -21,6 +22,16 @@ public class Neuron {
         rightSynapses = new ArrayList<>();
         leftSynapses = new ArrayList<>();
         this.weight = weight;
+    }
+
+    public double getRightSynNeuronsWeight() {
+        double rez = 0;
+
+        for (Synapse s :
+                rightSynapses) {
+           rez = rez + s.getRightNeuronWeight();
+        }
+        return rez;
     }
 
     public ArrayList<Synapse> getRightSynapses() {
@@ -45,5 +56,13 @@ public class Neuron {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public double getDeltaWeight() {
+        return DeltaWeight;
+    }
+
+    public void setDeltaWeight(double deltaWeight) {
+        DeltaWeight = deltaWeight;
     }
 }

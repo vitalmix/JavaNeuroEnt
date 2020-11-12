@@ -4,8 +4,11 @@ import javafx.scene.shape.Line;
 
 public class Synapse {
      private double weight;
+     private double deltaWeight;
      private Neuron lNeuron;
      private Neuron rNeuron;
+     private double grad;
+     private double pastWeight = 0;
 
     //---------------For drawing
 
@@ -26,20 +29,12 @@ public class Synapse {
         return lNeuron.getWeight() * this.weight;
     }
 
-    public Neuron getlNeuron() {
-        return lNeuron;
+    public double getRightNeuronDelta() {
+          return rNeuron.getDeltaWeight();
     }
 
-    public void setlNeuron(Neuron lNeuron) {
-        this.lNeuron = lNeuron;
-    }
-
-    public Neuron getrNeuron() {
-        return rNeuron;
-    }
-
-    public void setrNeuron(Neuron rNeuron) {
-        this.rNeuron = rNeuron;
+    public double getRightNeuronWeight() {
+        return rNeuron.getWeight();
     }
 
     public double getWeight() {
@@ -47,15 +42,32 @@ public class Synapse {
     }
 
     public void setWeight(double weight) {
-        this.weight = weight;
+          //pastWeight = this.weight;
+          this.weight = weight;
     }
 
-    public void setLNeuron(Neuron lNeuron) {
-        this.lNeuron = lNeuron;
+    public double getGrad() {
+        return grad;
     }
 
-    public void setRNeuron(Neuron rNeuron) {
-        this.rNeuron = rNeuron;
+    public void setGrad(double grad) {
+        this.grad = grad;
+    }
+
+    public double getPastWeight() {
+        return pastWeight;
+    }
+
+    public void setPastWeight(double pastWeight) {
+        this.pastWeight = pastWeight;
+    }
+
+    public double getDeltaWeight() {
+        return deltaWeight;
+    }
+
+    public void setDeltaWeight(double deltaWeight) {
+        this.deltaWeight = deltaWeight;
     }
 
     //---------------For drawing
